@@ -9,6 +9,10 @@ public class Child {
     private EyeColor eyeColor;
     private HairColor hairColor;
 
+    // OTHER PROPERTIES
+    private boolean isHungry;
+
+
     // GETTORS
     public String getName(){
         return this.name;
@@ -62,5 +66,9 @@ public class Child {
     public String toCry(){
         System.out.println("WAAAAAAAAAAHAAHAHAHAHAAH");
         return "WAAAAAAAHAHHAHAHAHAHAHAAH";
+    }
+    
+    public void eats(){
+        isHungry = false;
     }
 }

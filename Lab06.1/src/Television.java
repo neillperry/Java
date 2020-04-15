@@ -13,7 +13,7 @@ public class Television {
 
     public static final int MIN_VOLUME = 0;
     public static final int MAX_VOLUME = 100;
-
+    public static final String[] VALID_BRANDS = {"Samsung", "LG", "Sony", "Toshiba", "Panasonic", "Apple"};
     // CONSTRUCTORS
     // create a Television with default values
     public Television(){}
@@ -82,8 +82,7 @@ public class Television {
     }
 
     public void setBrand(String brand) {
-        if (brand.equals("Samsung") || brand.equals("LG") || brand.equals("Panasonic") || brand.equals(
-                "Toshiba") || brand.equals("Sony"))
+        if (isValidBrand(brand))
         {
             this.brand = brand;
         } else {
@@ -100,8 +99,20 @@ public class Television {
         return "Television: brand="+ getBrand() + ", volume=" + getVolume() + ", display=" + getDisplayType();
     }
 
+    // validate whether inputted brand is contained in the VALID_BRANDS array
+    private static boolean isValidBrand(String brand){
+        boolean returnValue = false;
+        for (String b: VALID_BRANDS){
+            if (b.equals(brand)) {
+                returnValue = true;
+                break;
+            }
+        }
+        return returnValue;
+    }
+
     // Turn On television
-    void turnOn() {
+    public void turnOn() {
         if (isOn) {
             System.out.println("It's already turned on!");
         } else {
@@ -111,7 +122,7 @@ public class Television {
     }
 
     // Turn Off television
-    void turnOff() {
+    public void turnOff() {
         if (!isOn) {
             System.out.println("It's already turned off!");
         } else {
