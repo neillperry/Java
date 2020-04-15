@@ -3,6 +3,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Child {
+    // PROPERTIES
     private String name;
     private LocalDate dob;
     private EyeColor eyeColor;
