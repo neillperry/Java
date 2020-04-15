@@ -2,9 +2,9 @@
 
 public class Television {
     // INstance properties
-    private String brand;
+    private String brand = "Toshiba";
     private int volume = 5;
-    private String displayType = "LED";
+    private DisplayType displayType = DisplayType.LED;
 
     // class variables
     private Boolean isOn = false;
@@ -18,7 +18,34 @@ public class Television {
     // create a Television with default values
     public Television(){}
 
-    public Television(String brand, int volume, String display){
+    public Television(String brand){
+        setBrand(brand);
+    }
+
+    public Television(int volume){
+        setVolume(volume);
+    }
+
+    public Television(DisplayType display) {
+        setDisplayType(display);
+    }
+
+    public Television(int volume, String brand){
+        setVolume(volume);
+        setBrand(brand);
+    }
+
+    public Television(int volume, DisplayType display) {
+        setVolume(volume);
+        setDisplayType(display);
+    }
+
+    public Television(DisplayType display, String brand){
+        setDisplayType(display);
+        setBrand(brand);
+    }
+
+    public Television(String brand, int volume, DisplayType display){
         setVolume(volume);
         setBrand(brand);
         setDisplayType(display);
@@ -34,7 +61,7 @@ public class Television {
         return this.brand;
     }
 
-    public String getDisplayType() {
+    public DisplayType getDisplayType() {
         return this.displayType;
     }
 
@@ -64,7 +91,7 @@ public class Television {
         }
     }
 
-    public void setDisplayType(String display) {
+    public void setDisplayType(DisplayType display) {
         this.displayType = display;
     }
 
