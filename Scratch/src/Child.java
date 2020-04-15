@@ -59,6 +59,7 @@ public class Child {
 
     //METHODS
     public String toCry(){
+        System.out.println("WAAAAAAAAAAHAAHAHAHAHAAH");
         return "WAAAAAAAHAHHAHAHAHAHAHAAH";
     }
 }
