@@ -1,9 +1,9 @@
 import java.time.LocalDate;
 
-public class ChildClientArgs {
+class ChildClientArgs {
 
     public static void main(String[] args) {
-        if (args.length < 3) {
+        if (args.length < 5) {
             System.out.println("ERROR: five inputs needed to create a child");
         } else {
             createChild(args);

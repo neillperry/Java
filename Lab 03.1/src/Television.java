@@ -1,6 +1,6 @@
 
 
-public class Television {
+class Television {
     private String brand = "Toshiba";      // brand of television
     private int volume = 5;        // current volume
     private Boolean isOn = false;

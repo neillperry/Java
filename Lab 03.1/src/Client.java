@@ -2,7 +2,7 @@
 *     Driver code for the Television class
  */
 
-public class Client {
+class Client {
 
     public static void main(String[] args) {
         Television tele = new Television();

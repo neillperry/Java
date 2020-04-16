@@ -1,6 +1,6 @@
+package com.entertainment;
 
-
-class Television {
+public class Television {
     // INstance properties
     private String brand = "Toshiba";
     private int volume = 5;
@@ -15,7 +15,7 @@ class Television {
     public static final int MAX_VOLUME = 100;
 
     // CONSTRUCTORS
-    // create a Television with default values
+    // create a com.entertainment.Television with default values
     public Television(){}
 
     public Television(String brand){
@@ -97,7 +97,7 @@ class Television {
 
     // toString method
     public String toString(){
-        return "Television: brand="+ getBrand() + ", volume=" + getVolume() + ", display=" + getDisplayType();
+        return "com.entertainment.Television: brand="+ getBrand() + ", volume=" + getVolume() + ", display=" + getDisplayType();
     }
 
     // Turn On television

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-public class MadLibs {
+class MadLibs {
 
     // variables for the Mad Lib
     String noun1 = "";

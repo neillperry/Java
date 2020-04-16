@@ -1,5 +1,4 @@
-
-public class Television {
+class Television {
 
     private String brand = "Toshiba";      // brand of television
     private int volume = 50;        // current volume

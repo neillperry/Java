@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class HiLo {
+class HiLo {
 
     public static void playGame() {
         Scanner scan = new Scanner(System.in);

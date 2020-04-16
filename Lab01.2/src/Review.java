@@ -3,7 +3,7 @@ import java.util.List;
 import java.io.IOException;
 
 
-public class Review {
+class Review {
 
     public static void loadFile(String fileName) throws IOException {
         Path file = FileSystems.getDefault().getPath("", fileName);

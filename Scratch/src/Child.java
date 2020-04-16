@@ -1,9 +1,7 @@
 import java.time.LocalDate;
-import java.time.*;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.Period;
 
-public class Child {
+class Child {
     // PROPERTIES
     private String name;
     private LocalDate dob;
@@ -57,11 +55,16 @@ public class Child {
 
     // CONSTRUCTORS
     public Child(String name, LocalDate dob, EyeColor eyeColor, HairColor hairColor, boolean brat) {
-        setName(name);
-        setDob(dob);
-        setEyeColor(eyeColor);
-        setHairColor(hairColor);
-        setIsABrat(brat);
+        if (isAgePositive(dob)) {
+            setName(name);
+            setDob(dob);
+            setEyeColor(eyeColor);
+            setHairColor(hairColor);
+            setIsABrat(brat);
+        } else {
+            System.out.println("ERROR: Inputted Age is Negative. A child instance will be created only for chlidren already born.");
+        }
+
     }
 
     public Child() { }
@@ -72,11 +75,24 @@ public class Child {
  + ", Eye Color=" + getEyeColor() + ", Hair Color=" + getHairColor(); }
 
     //METHODS
-    public void calculateAge() {
+    // calculate the time between a given date and today (future dates are negative)
+    public int calculateAge(LocalDate date) {
         LocalDate today = LocalDate.now();
-        Duration duration = Duration.between(today, dob);
-        int days = (int) duration.toDays();
-        System.out.println(age.toDays());
+        Period period = Period.between(date, today);
+        int age = period.getYears();
+        System.out.println("Age is " + age);
+        return age;
+    }
+
+    // method returns false if inputted date is in the future
+    public boolean isAgePositive(LocalDate date){
+        int age;
+        boolean returnValue = false;
+        age = calculateAge(date);
+        if (age >= 0) {
+            returnValue = true;
+        }
+        return returnValue;
     }
 
     public String toCry(){
