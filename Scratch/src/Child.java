@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.*;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -8,6 +9,7 @@ public class Child {
     private LocalDate dob;
     private EyeColor eyeColor;
     private HairColor hairColor;
+    private boolean isABrat;
 
     // OTHER PROPERTIES
     private boolean isHungry;
@@ -30,6 +32,8 @@ public class Child {
         return this.hairColor;
     }
 
+    public boolean getIsABrat() { return this.isABrat; }
+
     // SETTORS
     public void setName(String name) {
         this.name = name;
@@ -47,12 +51,17 @@ public class Child {
         this.hairColor = color;
     }
 
+    public void setIsABrat(boolean brat) {
+        this.isABrat = brat;
+    }
+
     // CONSTRUCTORS
-    public Child(String name, LocalDate dob, EyeColor eyeColor, HairColor hairColor) {
+    public Child(String name, LocalDate dob, EyeColor eyeColor, HairColor hairColor, boolean brat) {
         setName(name);
         setDob(dob);
         setEyeColor(eyeColor);
         setHairColor(hairColor);
+        setIsABrat(brat);
     }
 
     public Child() { }
@@ -63,12 +72,23 @@ public class Child {
  + ", Eye Color=" + getEyeColor() + ", Hair Color=" + getHairColor(); }
 
     //METHODS
+    public void calculateAge() {
+        LocalDate today = LocalDate.now();
+        Duration duration = Duration.between(today, dob);
+        int days = (int) duration.toDays();
+        System.out.println(age.toDays());
+    }
+
     public String toCry(){
         System.out.println("WAAAAAAAAAAHAAHAHAHAHAAH");
         return "WAAAAAAAHAHHAHAHAHAHAHAAH";
     }
-    
+
     public void eats(){
         isHungry = false;
+    }
+
+    public void poop() {
+        System.out.println("Child has pooped. May need to change diapers");
     }
 }

@@ -7,7 +7,7 @@ public class TelevisionClient {
         // validate that a three-element array was passed into Main
         if (args.length < 3) {
             //if not, then tell the user they messed up and exit program
-            System.out.println("Need a 3 element array; [brand volume display]");
+            System.out.println("ERROR: Need a 3 element array; [brand volume display]");
             System.exit(0);
         } else {
             // but if there are three arguments, then make them a nice shiny television!

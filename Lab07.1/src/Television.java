@@ -1,24 +1,71 @@
 
-public class Television {
 
-    private String brand = "Toshiba";      // brand of television
-    private int volume = 50;        // current volume
-    private boolean isOn = false;
+public class Television {
+    // INstance properties
+    private String brand = "Toshiba";
+    private int volume = 5;
+    private DisplayType displayType = DisplayType.LED;
+
+    // class variables
+    private Boolean isOn = false;
     private int oldVolume;
     private boolean muted = false;
 
     public static final int MIN_VOLUME = 0;
     public static final int MAX_VOLUME = 100;
 
+    // CONSTRUCTORS
     // create a Television with default values
     public Television(){}
 
-    // create a Television with specified values
-    public Television(String brand, int volume1){
+    public Television(String brand){
         setBrand(brand);
-        this.volume = volume1;
     }
 
+    public Television(int volume){
+        setVolume(volume);
+    }
+
+    public Television(DisplayType display) {
+        setDisplayType(display);
+    }
+
+    public Television(int volume, String brand){
+        setVolume(volume);
+        setBrand(brand);
+    }
+
+    public Television(int volume, DisplayType display) {
+        setVolume(volume);
+        setDisplayType(display);
+    }
+
+    public Television(DisplayType display, String brand){
+        setDisplayType(display);
+        setBrand(brand);
+    }
+
+    public Television(String brand, int volume, DisplayType display){
+        setVolume(volume);
+        setBrand(brand);
+        setDisplayType(display);
+    }
+
+
+    // GETTERS
+    public int getVolume(){
+        return this.volume;
+    }
+
+    public String getBrand(){
+        return this.brand;
+    }
+
+    public DisplayType getDisplayType() {
+        return this.displayType;
+    }
+
+    // SETTERS
     private boolean isVolumeValid(int volume1) {
         if (volume1 > this.MAX_VOLUME || volume1 < this.MIN_VOLUME)  {
             return false;
@@ -34,10 +81,6 @@ public class Television {
         }
     }
 
-    public int getVolume(){
-        return this.volume;
-    }
-
     public void setBrand(String brand) {
         if (brand.equals("Samsung") || brand.equals("LG") || brand.equals("Panasonic") || brand.equals(
                 "Toshiba") || brand.equals("Sony"))
@@ -48,25 +91,17 @@ public class Television {
         }
     }
 
-    public String getBrand(){
-        return this.brand;
+    public void setDisplayType(DisplayType display) {
+        this.displayType = display;
     }
 
-    public boolean isMuted() {
-        return this.muted;
-    }
-
+    // toString method
     public String toString(){
-        String msg1;
-        if (!this.isMuted()) {
-            msg1 = String.valueOf(this.getVolume());
-        } else {
-            msg1 = "muted";
-        }
-        return "Television: brand=" + this.getBrand() + ", volume=" + msg1;
+        return "Television: brand="+ getBrand() + ", volume=" + getVolume() + ", display=" + getDisplayType();
     }
 
-    public void turnOn() {
+    // Turn On television
+    void turnOn() {
         if (isOn) {
             System.out.println("It's already turned on!");
         } else {
@@ -75,7 +110,8 @@ public class Television {
         }
     }
 
-    public void turnOff() {
+    // Turn Off television
+    void turnOff() {
         if (!isOn) {
             System.out.println("It's already turned off!");
         } else {
@@ -84,6 +120,8 @@ public class Television {
         }
     }
 
+    // VOLUME CONTROLS
+    // Increase volume by 1
     public void increaseVoluem() {
         if (isOn && isVolumeValid(this.volume +1)){
             this.volume = this.volume + 1;
@@ -91,6 +129,7 @@ public class Television {
         }
     }
 
+    // Decrease volume by 1
     public void decreaseVolume() {
         if (isOn && isVolumeValid(this.volume-1)){
             this.volume = this.volume - 1;
@@ -98,6 +137,12 @@ public class Television {
         }
     }
 
+    // check whether TV is currently muted or not
+    private boolean isMuted() {
+        return this.muted;
+    }
+
+    // mute and unmute television
     public void mute() {
         if (isMuted()) {
             this.setVolume(oldVolume);
@@ -108,6 +153,4 @@ public class Television {
             this.setVolume(0);
         }
     }
-
 }
-
