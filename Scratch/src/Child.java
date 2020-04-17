@@ -80,7 +80,6 @@ class Child {
         LocalDate today = LocalDate.now();
         Period period = Period.between(date, today);
         int age = period.getYears();
-        System.out.println("Age is " + age);
         return age;
     }
 
