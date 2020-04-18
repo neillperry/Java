@@ -76,7 +76,7 @@ public class Child {
     // To String Method
     public String toString() {
         return "Child: name=" + getName() + ", DOB:" + getDob()
-                + ", Eye Color=" + getEyeColor() + ", Hair Color=" + getHairColor(); }
+                + ", Eye Color=" + getEyeColor() + ", Hair Color=" + getHairColor() + ", Brattiness: " + getIsABrat(); }
 
     //METHODS
     // calculate the time between a given date and today (future dates are negative)
@@ -87,7 +87,7 @@ public class Child {
         return age;
     }
 
-    // method returns false if inputted date is in the future
+    // validate date of birth is in the past (returns false if date is in the future)
     public boolean isAgePositive(LocalDate date){
         int age;
         boolean returnValue = false;
@@ -98,21 +98,31 @@ public class Child {
         return returnValue;
     }
 
-    public String toCry(){
+    // BUSINESS METHODS
+    // cries = prints out a wail
+    public void cries(){
         System.out.println("WAAAAAAAAAAHAAHAHAHAHAAH");
-        return "WAAAAAAAHAHHAHAHAHAHAHAAH";
     }
 
-    public void toAnnoy() {
+    // annoys method is age specific to Child instance
+    public void annoys() {
         int age = calculateAge(dob);
-
+        if (age < 2) {
+            cries();
+        } else if (age < 12) {
+            System.out.println("I'm so bored!");
+        } else if (age < 18) {
+            System.out.println("give me money");
+        };
     }
 
+    // eats method updates child's isHungry variable to false
     public void eats(){
         isHungry = false;
     }
 
-    public void poop() {
+    // poops prints out a String alert
+    public void poops() {
         System.out.println("Child has pooped. May need to change diapers");
     }
 }

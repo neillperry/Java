@@ -7,19 +7,23 @@ import com.child.HairColor;
 
 class ChildClientArgs {
 
-    // configuration file passes a 5-element String array to main method
+    // configuration file passes in the following String array: Gertrude 2014-09-13 BROWN BROWN true
     public static void main(String[] args) {
 
-        // if the String array has less than 5 elements, then print out error
+        // check to see that 5 args are passed in
         if (args.length < 5) {
+
+            // if the String array has less than 5 elements, then print out error
             System.out.println("ERROR: five inputs needed to create a child");
+
         } else {
+
             // else pass the String array to create an instance of a child
             Child kid = createChild(args);
 
             // call a method on the kid instance
-            kid.toCry();
-            kid.toAnnoy();
+            kid.cries();
+            kid.annoys();
         }
     }
 
@@ -34,7 +38,7 @@ class ChildClientArgs {
         HairColor hairColor = HairColor.valueOf(args[3]);
         boolean brat = Boolean.valueOf(args[4]);
 
-        // B. now with the five variabels in the appropriate format, create a child
+        // B. now with the five variables in the appropriate format, create a child
         Child kiddo = new Child(name, dob, eyeColor, hairColor, brat);
 
         // C. return Child instance so that main method can manipulate it
