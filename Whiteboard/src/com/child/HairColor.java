@@ -1,3 +1,5 @@
+package com.child;
+
 public enum HairColor {
     BROWN,
     RED,
@@ -6,3 +8,4 @@ public enum HairColor {
     GREEN,
     BLACK
 }
+

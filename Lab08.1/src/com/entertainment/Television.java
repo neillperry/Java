@@ -32,7 +32,7 @@ public class Television {
   private String brand = "Sony";
   private int volume = 1;
   private DisplayType display = DisplayType.LED;
-  // TODO: Create variable for Tuner and instantiate one.
+  private Tuner tuner = new Tuner();
 
   // CONSTRUCTORS
   // No-arg constructor.
@@ -76,7 +76,13 @@ public class Television {
     System.out.println("Shutting down your " + brand + " brand TV ...goodbye");
   }
   
-  // TODO: Write methods to get and change the channel
+  public void changeChannel(String channel) {
+  	tuner.setChannel(channel);
+  }
+
+  public void getCurrentChannel() {
+  	tuner.getChannel();
+  }
   
   
   // ACCESSOR METHODS (getters/setters)

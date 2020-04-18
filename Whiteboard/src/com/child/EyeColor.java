@@ -1,3 +1,5 @@
+package com.child;
+
 public enum EyeColor {
     GREEN,
     HAZEL,
@@ -5,3 +7,4 @@ public enum EyeColor {
     BLUE,
     BLOODSHOT
 }
+

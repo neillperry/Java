@@ -22,6 +22,8 @@ import java.time.LocalDate;
 
 import com.hr.personnel.Department;
 import com.hr.personnel.Employee;
+import com.hr.personnel.HourlyEmployee;
+import com.hr.personnel.SalariedEmployee;
 
 public class Client {
 
@@ -32,8 +34,10 @@ public class Client {
     
     // add Employees to it
     dept.addEmployee(new Employee("Jason", LocalDate.of(1990, 8, 24))); 
-    dept.addEmployee(new Employee("Julie", LocalDate.of(2000, 2, 2))); 
-    
+    dept.addEmployee(new Employee("Julie", LocalDate.of(2000, 2, 2)));
+    dept.addEmployee(new SalariedEmployee("Beetlejuice", LocalDate.of(1912, 4, 19), 12000.0));
+    dept.addEmployee(new HourlyEmployee("Mance Raider", LocalDate.of(931, 3, 29), 24.0, 20.0));
+
     // list its Employees
     System.out.println("\nList employees:");
     dept.listEmployees();

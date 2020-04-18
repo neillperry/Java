@@ -26,8 +26,8 @@ class TelevisionTest {
 	  Television tv = new Television("Samsung", 65, DisplayType.LED);
 	  System.out.println(tv);
 	  
-	  // TODO: Change the channel
-	  
+	  tv.changeChannel("HBO");
+	  tv.getCurrentChannel();
 	  System.out.println(tv);
   }
 }

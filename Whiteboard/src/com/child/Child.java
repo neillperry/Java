@@ -1,7 +1,9 @@
+package com.child;
+
 import java.time.LocalDate;
 import java.time.Period;
 
-class Child {
+public class Child {
     // PROPERTIES
     private String name;
     private LocalDate dob;
@@ -54,6 +56,7 @@ class Child {
     }
 
     // CONSTRUCTORS
+    // 5-argument constructor
     public Child(String name, LocalDate dob, EyeColor eyeColor, HairColor hairColor, boolean brat) {
         if (isAgePositive(dob)) {
             setName(name);
@@ -67,12 +70,13 @@ class Child {
 
     }
 
+    // ZERO-argument constructor
     public Child() { }
 
     // To String Method
     public String toString() {
         return "Child: name=" + getName() + ", DOB:" + getDob()
- + ", Eye Color=" + getEyeColor() + ", Hair Color=" + getHairColor(); }
+                + ", Eye Color=" + getEyeColor() + ", Hair Color=" + getHairColor(); }
 
     //METHODS
     // calculate the time between a given date and today (future dates are negative)
@@ -97,6 +101,11 @@ class Child {
     public String toCry(){
         System.out.println("WAAAAAAAAAAHAAHAHAHAHAAH");
         return "WAAAAAAAHAHHAHAHAHAHAHAAH";
+    }
+
+    public void toAnnoy() {
+        int age = calculateAge(dob);
+
     }
 
     public void eats(){
