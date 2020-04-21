@@ -6,7 +6,7 @@ import com.child.HairColor;
 import java.time.LocalDate;
 
 
-class ChildClientTest {
+class ChildClient {
 
     public static void main(String[] args) {
 
