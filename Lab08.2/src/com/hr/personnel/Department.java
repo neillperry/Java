@@ -49,11 +49,23 @@ public class Department {
 		  System.out.println(employees[i]);
 	  }
   }
-  
+
+  public void listSalaried() {
+    for (int i = 0; i < currentIndex; i++) {
+      if (employees[i].getClass() == SalariedEmployee.class) {
+        System.out.println(employees[i].getName());
+      }
+    }
+  }
+
   public void workEmployees() {
     for (int i = 0; i < currentIndex; i++) {
-      employees[i].work();
+      employees[i].pay();
     }
+  }
+
+  public void payEmployees() {
+
   }
   
   // helper method to add an Employee to the array

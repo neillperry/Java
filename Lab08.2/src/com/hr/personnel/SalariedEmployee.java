@@ -32,4 +32,9 @@ public class SalariedEmployee extends Employee {
                 "salary=" + salary +
                 '}';
     }
+
+    // Pay method
+    public void pay() {
+        System.out.println(super.getName() + " got paid " + String.valueOf(getSalary()) + " salary");
+    }
 }

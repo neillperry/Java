@@ -45,4 +45,9 @@ public class HourlyEmployee extends Employee {
                 ", hours=" + hours +
                 '}';
     }
+
+    // Pay Method
+    public void pay() {
+        System.out.println(super.getName() + "got paid " + String.valueOf(getRate() * getHours()) + " for hourly work");
+    }
 }

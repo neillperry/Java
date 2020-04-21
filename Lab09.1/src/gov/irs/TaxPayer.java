@@ -15,4 +15,14 @@ package gov.irs;
 
 public interface TaxPayer {
   public void payTaxes();
+  default public void submitDocuments() {
+    System.out.println("Documents submitted by regular U.S. Mail");
+  }
+
+  default public double getStandardDeduction() {
+    return 7500.0;
+  }
+
+
+
 }

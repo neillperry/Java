@@ -78,5 +78,10 @@ extends Employee {
   public String toString() {
 	  return "HourlyEmployee [rate=" + rate + ", hours=" + hours + ", toString()=" + super.toString() + "]";
   }
-    
+
+  @Override
+  public void payTaxes() {
+    double taxes = rate * hours * TAX_RATE;
+    System.out.println(super.getName() + " owes " + taxes + " in taxes.");
+  }
 }

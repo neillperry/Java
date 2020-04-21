@@ -24,9 +24,18 @@ public class IRS {
   public void collectTaxes() {
     for (int i = 0; i < currentIndex; i++) {
       payers[i].payTaxes();
+      payers[i].submitDocuments();
     }
   }
-  
+
+  public void getStandardDeduction() {
+    for (int i = 0; i < currentIndex; i++) {
+      payers[i].getStandardDeduction();
+    }
+  }
+
+
+
   // helper method to add a Taxpayer to the array
   public void register(TaxPayer payer) {
     payers[currentIndex++] = payer;

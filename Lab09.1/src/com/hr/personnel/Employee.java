@@ -24,12 +24,14 @@
 
 package com.hr.personnel;
 
+import gov.irs.TaxPayer;
+
 import java.time.LocalDate;
 
 // TODO: Implement TaxPayer, but do NOT implement its methods.  This is OK because Employee is abstract.
 // It also means that Employee subclass must do the implementing.  
 // Or not, in which case they are also abstract ... Get it?
-public abstract class Employee {
+public abstract class Employee implements TaxPayer {
 	// INSTANCE VARIABLES
 	private String name;
 	private LocalDate hireDate;

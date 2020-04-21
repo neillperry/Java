@@ -68,4 +68,14 @@ extends Employee {
 	  return "SalariedEmployee [salary=" + salary + ", toString()=" + super.toString() + "]";
   }
 
+  @Override
+  public void payTaxes() {
+    double taxes = salary * TAX_RATE;
+    System.out.println(super.getName() + " owes " + taxes + " in taxes.");
+  }
+
+  @Override
+  public double getStandardDeduction() {
+    return 8500.0;
+  }
 }

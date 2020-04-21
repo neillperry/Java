@@ -26,7 +26,7 @@ package com.hr.personnel;
 
 import java.time.LocalDate;
 
-public class Employee {
+public abstract class Employee {
   // FIELDS
   private String name;
   private LocalDate hireDate;
@@ -59,8 +59,12 @@ public class Employee {
   public void setHireDate(LocalDate hireDate) {
     this.hireDate = hireDate;
   }
-  
+
+  @Override
   public String toString() {
     return "Employee: name=" + getName() + ", hireDate=" + getHireDate();
   }
+
+  // TO PAY - method declaration
+ public abstract void pay();
 }
