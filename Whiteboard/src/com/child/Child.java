@@ -14,6 +14,28 @@ public class Child {
     // OTHER PROPERTIES
     private boolean isHungry;
 
+    // CONSTRUCTORS
+    // 5-argument constructor
+    public Child(String name, LocalDate dob, EyeColor eyeColor, HairColor hairColor, boolean brat) {
+        if (isAgePositive(dob)) {
+            setName(name);
+            setDob(dob);
+            setEyeColor(eyeColor);
+            setHairColor(hairColor);
+            setIsABrat(brat);
+        } else {
+            System.out.println("ERROR: Inputted Age is Negative. A child instance will be created only for chlidren already born.");
+        }
+
+    }
+
+    // ZERO-argument constructor
+    public Child() { }
+
+    // To String Method
+    public String toString() {
+        return "Child: name=" + getName() + ", DOB:" + getDob()
+                + ", Eye Color=" + getEyeColor() + ", Hair Color=" + getHairColor() + ", Brattiness: " + getIsABrat(); }
 
     // GETTORS
     public String getName(){
@@ -54,29 +76,6 @@ public class Child {
     public void setIsABrat(boolean brat) {
         this.isABrat = brat;
     }
-
-    // CONSTRUCTORS
-    // 5-argument constructor
-    public Child(String name, LocalDate dob, EyeColor eyeColor, HairColor hairColor, boolean brat) {
-        if (isAgePositive(dob)) {
-            setName(name);
-            setDob(dob);
-            setEyeColor(eyeColor);
-            setHairColor(hairColor);
-            setIsABrat(brat);
-        } else {
-            System.out.println("ERROR: Inputted Age is Negative. A child instance will be created only for chlidren already born.");
-        }
-
-    }
-
-    // ZERO-argument constructor
-    public Child() { }
-
-    // To String Method
-    public String toString() {
-        return "Child: name=" + getName() + ", DOB:" + getDob()
-                + ", Eye Color=" + getEyeColor() + ", Hair Color=" + getHairColor() + ", Brattiness: " + getIsABrat(); }
 
     //METHODS
     // calculate the time between a given date and today (future dates are negative)
