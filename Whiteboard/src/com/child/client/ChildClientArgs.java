@@ -1,9 +1,10 @@
-package com.child.test;
+package com.child.client;
 
-import java.time.LocalDate;
 import com.child.Child;
 import com.child.EyeColor;
 import com.child.HairColor;
+
+import java.time.LocalDate;
 
 class ChildClientArgs {
 
