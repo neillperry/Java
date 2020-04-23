@@ -169,21 +169,11 @@ public class InMemoryCatalog implements Catalog {
 	 * TASK: how many items of the specified genre do we sell?
 	 */
     public int howManySold(MusicCategory genre) {
-    	// create a return variable of type int
-		int count = 0;
+		//
+    	Collection<MusicItem> genreList = findByCategory(genre);
 
-		//iterate over the entire catalogData array
-		for (MusicItem m: catalogData) {
+    	return genreList.size();
 
-			// if MusicItem is of the type queried
-			if (m.getMusicCategory().equals(genre)) {
-				// increment the count variable by one
-				count++;
-			}
-		}
-
-		// return the count
-    	return count;
 	}
 
 	/**
