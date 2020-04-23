@@ -48,8 +48,7 @@ extends Employee {
     setHireDate(hireDate);
   }
   
-  public HourlyEmployee(String name, LocalDate hireDate, double rate, double hours)
-  throws IllegalArgumentException, IllegalWageException {
+  public HourlyEmployee(String name, LocalDate hireDate, double rate, double hours) {
     setName(name);
     setHireDate(hireDate);
     setRate(rate);
@@ -67,12 +66,8 @@ extends Employee {
     return rate;
   }
 
-  public void setRate(double rate) throws IllegalWageException {
-    if (rate < FEDERAL_MINIMUM) {
-      throw new IllegalWageException("ERROR: can't pay employees less than minimum wage");
-    } else {
+  public void setRate(double rate) {
       this.rate = rate;
-    }
   }
 
   /*
@@ -88,13 +83,8 @@ extends Employee {
   public double getHours() {
     return hours;
   }
-  public void setHours(double hours) throws IllegalArgumentException {
-    if (0 <= hours && hours <= 40) {
+  public void setHours(double hours) {
       this.hours = hours;
-    } else {
-      throw new IllegalArgumentException("ERROR: Invalid hours: valid range is 0 to 40");
-    }
-
   }
 
   // Have toString() include Employee.toString() value

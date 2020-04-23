@@ -31,14 +31,14 @@ public class Client {
   public static void main(String[] args) {
 
 	IRS irs = new IRS();  // Create an IRS instance.
-      try  {
-          // create Employees (Hourly or Salaried), and register them with the IRS
-          irs.register(new HourlyEmployee("Jason", LocalDate.of(1990,8, 16), 4, 20));
-          irs.register(new HourlyEmployee("John", LocalDate.of(2010, 10, 11), 8, 40));
-      } catch(IllegalWageException e) {
-          System.out.println("Stop trying to underpay your workers");
-      } catch (IllegalArgumentException e) {
-          System.out.println("Stop trying to work them full time, you idiot!");
-      }
+
+      // create Employees (Hourly or Salaried), and register them with the IRS
+      irs.register(new HourlyEmployee("Jason", LocalDate.of(1990,8,24), 22.50, 40));
+      irs.register(new SalariedEmployee("Tina", LocalDate.of(2000,2,2), 1250));
+      irs.register(new HourlyEmployee("John", LocalDate.of(2010, 10, 11), 8, 40));
+      irs.register(new SalariedEmployee("Jane", LocalDate.of(2005,7,1), 1500));
+
+
+
   }
 }

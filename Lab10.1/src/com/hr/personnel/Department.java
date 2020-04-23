@@ -24,13 +24,18 @@
  */
 
 package com.hr.personnel;
+import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 public class Department {
   // INSTANCE VARIABLES
   private String name;
   private String location;
-  private Employee[] employees = new Employee[100];
-  private int currentIndex = 0;  // for dealing with array
+  private List<Employee> employees = new ArrayList<>();
+
   
   // CONSTRUCTORS
   public Department() {
@@ -43,30 +48,28 @@ public class Department {
   
   // BEHAVIORAL METHODS
   public void listEmployees() {
-	  // Note that we don't use for-each here because we only want to access the array where employees were added
-	  // Question: What is in the array for indices where no Employee was added?
-	  for (int i = 0; i < currentIndex; i++) {  
-		  System.out.println(employees[i]);
-	  }
+    for (Employee emp: employees) {
+      System.out.println(emp);
+    }
   }
   
   public void workEmployees() {
-    for (int i = 0; i < currentIndex; i++) {
-      employees[i].work();
+    for (Employee emp: employees) {
+      emp.work();
     }
   }
   
   // Implement payEmployees() method by calling pay() on each Employee
   // it will look similar to the workEmployees() method above
   public void payEmployees() {
-    for (int i = 0; i < currentIndex; i++) {
-      employees[i].pay();
+    for (Employee emp: employees) {
+      emp.pay();
     }
   }
   
   // helper method to add an Employee to the array
   public void addEmployee(Employee emp) {
-    employees[currentIndex++] = emp;
+    employees.add(emp);
   }
   
   // ACCESSOR METHODS
