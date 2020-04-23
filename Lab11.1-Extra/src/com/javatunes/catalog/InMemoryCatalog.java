@@ -8,11 +8,9 @@
  */
 package com.javatunes.catalog;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.*;
 
 // OF COURSE THIS CLASS DOESN'T COMPILE
 // Your first job is to fulfill the contract that this class has signed.
@@ -40,6 +38,67 @@ public class InMemoryCatalog implements Catalog {
 	  new MusicItem(18L, "Escape",                    "Journey",                   "1981-02-25", 11.97, MusicCategory.CLASSIC_ROCK))
 	);
 
+	public int size(){
+		return catalogData.size();
+	}
+
+
+	public MusicItem findById(Long id) {
+		// create a for-each loop iterates over the entire array
+		for (MusicItem m: catalogData){
+			// if statement to check if it is the music item I am looking for
+			if (m.getId().equals(id)) {
+				return m;
+			}
+		}
+		return null;
+	}
+
+	public Collection<MusicItem> findByKeyword(String keyword){
+
+		//create a blank array that we will return
+		List<MusicItem> subArray = new ArrayList();
+
+		// change search keyword to lowercase
+		String lowerKeyword = keyword.toLowerCase();
+
+		//iterate over the entire catalogData array
+		for (MusicItem m: catalogData){
+
+			// for each element in the array, check to see if it's title or artist contain the keyword
+			if (m.getArtist().toLowerCase().contains(lowerKeyword) || m.getTitle().toLowerCase().contains(lowerKeyword)) {
+
+				// if there is a match, add that MusicItem m to the subArray that is returned at hte end of the method
+				subArray.add(m);
+			}
+		}
+
+		// after iterating over the array, return the subArray created at the beginning of the method
+		return subArray;
+	}
+
+	public Collection<MusicItem> findByCategory(MusicCategory category){
+
+		//create a blank array that we will return
+		List<MusicItem> subArray = new ArrayList();
+
+		//iterate over the entire catalogData array
+		for (MusicItem m: catalogData){
+			// for each element in the array, check to see if it's category matches the one the method is searching for
+			if (m.getMusicCategory().equals(category)) {
+				// if there is a match, add that MusicItem m to the subArray that is returned at hte end of the method
+				subArray.add(m);
+			}
+		}
+		// after iterating over the array, return the subArray created at the beginning of the method
+		return subArray;
+	}
+
+	public Collection<MusicItem> getAll(){
+		return Collections.checkedList(catalogData, MusicItem.class);
+	}
+
+
 	// AFTER YOU'VE SATISFIED YOUR CONTRACTUAL OBLIGATIONS ABOVE, DO THESE ADDITIONAL TASKS.
 	// NOTES:
 
@@ -65,37 +124,136 @@ public class InMemoryCatalog implements Catalog {
 	 * TASK: find all MusicItems where title is same as artist.
 	 * For example, Madonna's first album is simply titled, "Madonna."
 	 */
+	public Collection<MusicItem> sameArtistTitle(){
+
+		//create a blank array that we will return
+		ArrayList<MusicItem> subArray = new ArrayList();
+
+		//iterate over the entire catalogData array
+		for (MusicItem m: catalogData){
+			// for each element in the array, check to see if it's title is the saem as it's artist
+			if (m.getArtist().toLowerCase().equals(m.getTitle().toLowerCase())) {
+
+				// if there is a match, add that MusicItem m to the subArray that is returned at hte end of the method
+				subArray.add(m);
+			}
+		}
+		// after iterating over the array, return the subArray created at the beginning of the method
+		return subArray;
+	}
 
 
 	/**
 	 * TASK: find all "rock" items whose price is less than or equal to the specified price.
 	 */
+	public Collection<MusicItem> rockItemsAtPrice(double price){
+
+		//create a blank array that we will return
+		ArrayList<MusicItem> subArray = new ArrayList();
+
+		//iterate over the entire catalogData array
+		for (MusicItem m: catalogData){
+			// for each element in the array, check to see if it's title is the same as it's artist
+			if (m.getMusicCategory().equals(MusicCategory.ROCK) && m.getPrice() <= price) {
+
+				// if there is a match, add that MusicItem m to the subArray that is returned at hte end of the method
+				subArray.add(m);
+			}
+		}
+		// after iterating over the array, return the subArray created at the beginning of the method
+		return subArray;
+	}
 
 
 	/**
 	 * TASK: how many items of the specified genre do we sell?
 	 */
-
+    public int howManySold(MusicCategory genre) {
+    	return 0;
+	}
 
 	/**
 	 * TASK: determine average price of our low-cost, extensive catalog of music.
 	 */
+	public double averagePrice(){
+
+		double sumPrices = 0.0;
+
+		//iterate over the entire catalogData array
+		for (MusicItem m: catalogData){
+			sumPrices = m.getPrice() + sumPrices;
+		}
+		// after iterating over the array, return the subArray created at the beginning of the method
+		return sumPrices / size();
+	}
 
 
 	/**
 	 * TASK: find the cheapest item with the specified genre.
 	 */
+	public MusicItem cheapestInGenre(MusicCategory category) {
+		// current variable pointers and set them both to null
+		Double lowestPrice = null;
+		MusicItem cheapestMusicItem = null;
+
+		//iterate over the entire catalogData array
+		for (MusicItem m: catalogData) {
+			// if lowestPrice is null
+			if (lowestPrice == null && m.getMusicCategory().equals(category)) {
+				// then set the variable pointers to the first item that matches the category
+				lowestPrice = m.getPrice();
+				cheapestMusicItem = m;
+			}
+			if (m.getMusicCategory().equals(category) && m.getPrice() < lowestPrice) {
+				lowestPrice = m.getPrice();
+				cheapestMusicItem = m;
+			}
+		}
+
+		// at the end of the for loop, return the cheapest item
+		return cheapestMusicItem;
+	}
+
 
 
 	/**
 	 * TASK: find the average price of items in the specified genre.
 	 */
+	public double averagePriceInGenre(MusicCategory category) {
+		// current cheap price
+		double sumPrice = 0.0;
+		int genreSize = 0;
+
+		//iterate over the entire catalogData array
+		for (MusicItem m: catalogData) {
+			if (m.getMusicCategory().equals(category)) {
+				sumPrice = m.getPrice() + sumPrice;
+				genreSize++;
+			}
+		}
+		// return the average
+		return sumPrice / genreSize;
+	}
 
 
 	/**
 	 * TASK: are all items priced at least $10?
 	 * This is a yes/no answer.
 	 */
+	public boolean allLowerThan() {
+
+		//iterate over the entire catalogData array
+		for (MusicItem m: catalogData) {
+
+			// if individual MusicItem m is less than $10.00
+			if (m.getPrice() < 10.00) {
+				// then return false
+				return false;
+			}
+		}
+		// otherwise, if no MusicItem is less than $10, return true
+		return true;
+	}
 
 
 	/**
@@ -108,11 +266,45 @@ public class InMemoryCatalog implements Catalog {
 	 * TASK: determine the titles of all "pop" items, sorted by natural order.
 	 * Just the titles!
 	 */
+	public Collection<String> sortPopTitles() {
+		//create a blank array that we will return
+		List<String> subArray = Arrays.asList();
+
+		//iterate over the entire catalogData array
+		for (MusicItem m: catalogData) {
+			// if MusicItem m is of the Pop genre
+			if (m.getMusicCategory().equals(MusicCategory.POP)) {
+				// then add its title to the String array subArray
+				subArray.add(m.getTitle());
+			}
+		}
+		// sort the subArray
+		Collections.sort(subArray);
+
+		// return the sorted subArray
+		return subArray;
+	}
 
 
 	/**
 	 * TASK: find all items released in the 80s whose price is less than or equal to the specified price.
 	 */
+	public Collection<MusicItem> EightiesMusicAtPrice (double price) {
+
+		//create a blank array that we will return
+		ArrayList<MusicItem> subArray = new ArrayList();
+
+		//iterate over the entire catalogData array
+		for (MusicItem m: catalogData) {
+			// if MusicItem m is less than or equal to price and was releaesd before Jan 1, 1990
+			if (m.getPrice() <= price && m.getReleaseDate().before(Date.valueOf("1990-01-01"))) {
+				// then add it to the subArray
+				subArray.add(m);
+			}
+		}
+		// return the subArray
+		return subArray;
+	}
 
 
 	/**
@@ -120,6 +312,32 @@ public class InMemoryCatalog implements Catalog {
 	 * is a collection of items in that genre.  If there is a genre that we don't currently
 	 * sell, that key's associated value should be an empty collection, not null.
 	 */
+    public Map<MusicCategory, Collection<MusicItem>> genres() {
+
+		//create a blank Map that we will store our sorted results
+		Map<MusicCategory, Collection<MusicItem>> returnMap = new HashMap<MusicCategory, Collection<MusicItem>>();
+
+		// iterate over the types of Musical genres, creating an empty collection for each music genre
+		for (MusicCategory m : MusicCategory.values()){
+			returnMap.put(m, new ArrayList<>());
+		}
+
+		//iterate over the entire catalogData array
+		for (MusicItem m: catalogData) {
+			    // call up the current value (array) associated with the key of the current MusicItem (genre)
+				Collection<MusicItem> oldValue = returnMap.get(m.getMusicCategory());
+
+				// modify that variable by passing in the object of the current MusicItem
+				oldValue.add(m);
+
+				// now replace the oldValue with the updated one with the current item
+				returnMap.replace(m.getMusicCategory(), oldValue);
+		}
+
+		// return the map
+		return returnMap;
+	}
+
 
 
 	@Override
