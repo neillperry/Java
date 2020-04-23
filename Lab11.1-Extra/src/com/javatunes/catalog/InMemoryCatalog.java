@@ -169,7 +169,21 @@ public class InMemoryCatalog implements Catalog {
 	 * TASK: how many items of the specified genre do we sell?
 	 */
     public int howManySold(MusicCategory genre) {
-    	return 0;
+    	// create a return variable of type int
+		int count = 0;
+
+		//iterate over the entire catalogData array
+		for (MusicItem m: catalogData) {
+
+			// if MusicItem is of the type queried
+			if (m.getMusicCategory().equals(genre)) {
+				// increment the count variable by one
+				count++;
+			}
+		}
+
+		// return the count
+    	return count;
 	}
 
 	/**
@@ -260,7 +274,20 @@ public class InMemoryCatalog implements Catalog {
 	 * TASK: do we sell any items with the specified genre?
 	 * Another yes/no answer.
 	 */
+	public boolean sellAnyOfType(MusicCategory genre) {
 
+		//iterate over the entire catalogData array
+		for (MusicItem m: catalogData) {
+
+			// if individual MusicItem m is less than $10.00
+			if (m.getMusicCategory().equals(genre)) {
+				// then return false
+				return false;
+			}
+		}
+		// otherwise, if no MusicItem is less than $10, return true
+		return true;
+	}
 
 	/**
 	 * TASK: determine the titles of all "pop" items, sorted by natural order.
