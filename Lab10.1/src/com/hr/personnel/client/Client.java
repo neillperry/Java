@@ -20,6 +20,8 @@ package com.hr.personnel.client;
 import java.time.LocalDate;
 
 import com.hr.corp.Corporation;
+import com.hr.personnel.Department;
+import com.hr.personnel.Employee;
 import com.hr.personnel.HourlyEmployee;
 import com.hr.personnel.SalariedEmployee;
 
@@ -39,6 +41,35 @@ public class Client {
       irs.register(new SalariedEmployee("Jane", LocalDate.of(2005,7,1), 1500));
 
 
+      // create Department object
+      Department dept = new Department("Sales", "Seattle");
+
+      // add Employees to it
+      dept.addEmployee(new SalariedEmployee("Beetlejuice", LocalDate.of(1912, 4, 19), 52000.0));
+      dept.addEmployee(new HourlyEmployee("Mance Raider", LocalDate.of(931, 3, 29), 34.0, 30.0));
+      dept.addEmployee(new SalariedEmployee("Steve Spurrier", LocalDate.of(1912, 4, 19), 24498.0));
+      dept.addEmployee(new HourlyEmployee("Scottie Pippen", LocalDate.of(931, 3, 29), 14.0, 10.0));
+      dept.addEmployee(new SalariedEmployee("Aaron Burr", LocalDate.of(1912, 4, 19), 81000.0));
+      dept.addEmployee(new HourlyEmployee("Squeker the Muppet", LocalDate.of(931, 3, 29), 20.0, 15.0));
+
+
+      // list its Employees
+      System.out.println("\nList employees:");
+      dept.listEmployees();
+
+
+      // make its Employees work
+      System.out.println("\nMake employees work:");
+      dept.workEmployees();
+
+      // make its Employees work
+      System.out.println("\nPay employees:");
+      dept.payEmployees();
+
+
+      // IRS collects taxes
+      System.out.println("IRS collects taxes");
+      irs.collectTaxes();
 
   }
 }

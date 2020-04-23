@@ -52,6 +52,14 @@ public class Department {
       System.out.println(emp);
     }
   }
+
+  public void listSalariedEmployees() {
+    for (Employee emp: employees) {
+      if (emp.getClass() == SalariedEmployee.class) {
+        System.out.println(emp.getName());
+      }
+    }
+  }
   
   public void workEmployees() {
     for (Employee emp: employees) {
