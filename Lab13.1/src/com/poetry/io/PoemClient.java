@@ -34,8 +34,7 @@ public class PoemClient {
    * Use a try-with-resources to initialize the stream and auto-close it.
    */
   private static void readPoem() {
-    try (BufferedReader reader = null) {  // TODO: initialize 'reader' variable
-      reader = new BufferedReader(new FileReader("famous-poem.txt"));
+    try (BufferedReader reader = new BufferedReader(new FileReader("famous-poem.txt"));) {  // TODO: initialize 'reader' variable
       // here is an easy way to dump out all the lines
       // you may not have worked with Java 8 streams, so we give this to you
       Stream<String> lines = reader.lines();
