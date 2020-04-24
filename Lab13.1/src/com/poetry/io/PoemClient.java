@@ -8,6 +8,7 @@
 package com.poetry.io;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.stream.Stream;
 
@@ -17,7 +18,7 @@ public class PoemClient {
    * Uncomment these after you've completed their implementations.
    */
   public static void main(String[] args) {
-    // readPoem();
+    readPoem();
     // writePoem();
   }
   
@@ -34,6 +35,7 @@ public class PoemClient {
    */
   private static void readPoem() {
     try (BufferedReader reader = null) {  // TODO: initialize 'reader' variable
+      reader = new BufferedReader(new FileReader("famous-poem.txt"));
       // here is an easy way to dump out all the lines
       // you may not have worked with Java 8 streams, so we give this to you
       Stream<String> lines = reader.lines();
