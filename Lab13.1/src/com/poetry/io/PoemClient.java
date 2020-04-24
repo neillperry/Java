@@ -7,9 +7,7 @@
  */
 package com.poetry.io;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.stream.Stream;
 
 public class PoemClient {
@@ -19,7 +17,7 @@ public class PoemClient {
    */
   public static void main(String[] args) {
     readPoem();
-    // writePoem();
+    writePoem();
   }
   
   /**
@@ -33,8 +31,15 @@ public class PoemClient {
    * Use a BufferedReader wrapped around a FileReader.
    * Use a try-with-resources to initialize the stream and auto-close it.
    */
+
+
+
+
   private static void readPoem() {
-    try (BufferedReader reader = new BufferedReader(new FileReader("famous-poem.txt"));) {  // TODO: initialize 'reader' variable
+
+    File file = new File("C:\\StudentWork\\IntroJava\\workspace\\Lab13.1\\famous-poem.txt");
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
       // here is an easy way to dump out all the lines
       // you may not have worked with Java 8 streams, so we give this to you
       Stream<String> lines = reader.lines();
@@ -52,6 +57,17 @@ public class PoemClient {
    * Use a try-with-resources to initialize the stream and auto-close it.
    */
   private static void writePoem() {
-    // TODO
+    File file = new File("C:\\StudentWork\\IntroJava\\workspace\\Lab13.1\\famous-poem.txt");
+
+    try (PrintWriter out = new PrintWriter(new FileWriter(file, true))) {
+      out.println("O Captain! my captain! our fearful trip is done,");
+      out.println("The ship has weathered ever rack, the prize we sought is won,");
+      out.println("The port is near, the bells I hear, the people all exulting,");
+      out.println("While follow eyes the steady keel, the vessel grim and daring;");
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
+
   }
 }
