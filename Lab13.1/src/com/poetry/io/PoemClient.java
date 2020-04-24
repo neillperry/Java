@@ -62,7 +62,7 @@ public class PoemClient {
    * Use a try-with-resources to initialize the stream and auto-close it.
    */
   private static void writePoem() {
-    File file = new File("C:\\StudentWork\\IntroJava\\workspace\\Lab13.1\\famous-poem.txt");
+    File file = new File("C:\\StudentWork\\IntroJava\\workspace\\Lab13.1\\lincoln.txt");
 
     try (PrintWriter out = new PrintWriter(new FileWriter(file, true))) {
       out.println("O Captain! my captain! our fearful trip is done,");
