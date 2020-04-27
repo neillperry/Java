@@ -7,14 +7,16 @@
  */
 package com.data.io;
 
+import java.io.*;
+
 public class PersonDataClient {
 
   /**
    * Uncomment these after you've completed their implementations.
    */
   public static void main(String[] args) {
-    // writeData();
-    // readData();
+    writeData();
+    readData();
   }
   
   /**
@@ -28,7 +30,17 @@ public class PersonDataClient {
    * Use a try-with-resources to initialize the stream and auto-close it.
    */
   private static void writeData() {
-    // TODO
+    try (DataOutputStream out = new DataOutputStream(
+         new FileOutputStream("person.dat"))) {
+      out.writeUTF("Java Programmer");
+      out.writeInt(101);
+      out.writeInt(13);
+      out.writeBoolean(false);
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
   
   /**
@@ -41,6 +53,22 @@ public class PersonDataClient {
    * Use a try-with-resources to initialize the stream and auto-close it.
    */
   private static void readData() {
-    // TODO
+    try (DataInputStream in = new DataInputStream(
+            new FileInputStream("person.dat"))) {
+      String name = in.readUTF();
+      int dalmations = in.readInt();
+      int luckynumber = in.readInt();
+      boolean isImmortal = in.readBoolean();
+
+      System.out.println("Occupation: " + name);
+      System.out.println("Dalmations: " + dalmations);
+      System.out.println("Lucky Number: " + luckynumber);
+      System.out.println("Immortal? " + isImmortal);
+
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
