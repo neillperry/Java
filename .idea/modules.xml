@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Celsius/Celsius.iml" filepath="$PROJECT_DIR$/Celsius/Celsius.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GUIProject/GUIProject.iml" filepath="$PROJECT_DIR$/GUIProject/GUIProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/HiLo/HiLo.iml" filepath="$PROJECT_DIR$/HiLo/HiLo.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lab 03.1/Lab 03.1.iml" filepath="$PROJECT_DIR$/Lab 03.1/Lab 03.1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lab01.1/Lab01.1.iml" filepath="$PROJECT_DIR$/Lab01.1/Lab01.1.iml" />
