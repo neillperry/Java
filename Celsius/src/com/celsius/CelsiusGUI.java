@@ -6,12 +6,13 @@ import java.awt.event.ActionListener;
 
 public class CelsiusGUI extends JFrame {
 
-
+    int theNumber;
     private JPanel mainPanel;
     private JTextField celsisuTextField;
     private JLabel celsiusLabel;
     private JButton convertButton;
     private JLabel fahrenheitLabel;
+    private JButton newGame;
 
     public CelsiusGUI(String title) {
         super(title);
@@ -24,21 +25,46 @@ public class CelsiusGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // grab the text from the Celsius text field
-                int tempFahr = (int) ((Double.parseDouble((celsisuTextField.getText()))) * 1.8 + 32);
-                // convert to a double
-
-                // update Fahrenheit label
-                fahrenheitLabel.setText(tempFahr + " Fahrenheit");
+                checkGuess();
             }
         });
     }
 
 
     public static void main(String[] args) {
-        JFrame frame = new CelsiusGUI("My Celsius Converter");
-        frame.setVisible(true);
+        // JFrame frame = new CelsiusGUI("Neill's Guessing Game");
+        // frame.setVisible(true);
+        CelsiusGUI game = new CelsiusGUI("Neill's Guessing Game");
+        game.setVisible(true);
+        game.newGame();
+
 
     }
 
+    public void checkGuess() {
+        String guessText = celsisuTextField.getText();
+        String message = " ";
+        int guess = Integer.parseInt(guessText);
 
+        // check to see if guess is too high, too low, or just right
+        if (guess < theNumber ) {
+            message = guess + " is too low. Try again.";
+        } else if (guess > theNumber) {
+            message = guess + " is too high. Try again.";
+        } else {
+            message = guess + " is correct! You win!";
+        }
+
+        fahrenheitLabel.setText(message);
+    }
+
+
+    public void newGame() {
+        theNumber = (int)(Math.random() * 100 + 1);
+    }
+
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }
