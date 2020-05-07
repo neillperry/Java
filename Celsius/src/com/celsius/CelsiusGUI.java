@@ -12,6 +12,10 @@ public class CelsiusGUI extends JFrame {
     private JLabel celsiusLabel;
     private JButton convertButton;
     private JLabel fahrenheitLabel;
+    private JTextField textField1;
+    private JTextArea textArea1;
+    private JTextField textField2;
+    private JLabel orderLabel;
     private JButton newGame;
 
     public CelsiusGUI(String title) {

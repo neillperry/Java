@@ -10,6 +10,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 public class Game extends JPanel implements ActionListener {
+    final static boolean shouldFill = true;
+    final static boolean shouldWeightX = true;
+    final static boolean RIGHT_TO_LEFT = false;
+
     protected JButton button1, button2, button3;
     private JTextField celsisuTextField;
     private JLabel label;
