@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 public class CelsiusGUI extends JFrame {
-
+    private boolean confirmButton = false;
     private int count = 100;
     private JPanel mainPanel;
     private JTextField friesField;
@@ -48,13 +48,21 @@ public class CelsiusGUI extends JFrame {
         orderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textArea1.setText(burgerField.getText() + " hamburgers " +
-                        "\n " + friesField.getText() + " fries" +
-                        "\n " + drinkField.getText() + " drinks");
-                orderButton.setText("Confirm Order");
+                if (!confirmButton) {
+                    textArea1.setText(burgerField.getText() + " hamburgers " +
+                            "\n " + friesField.getText() + " fries" +
+                            "\n " + drinkField.getText() + " drinks");
+                    orderButton.setText("Confirm Order");
+                    confirmButton = true;
+                    timer.setInitialDelay(0);
+                    timer.start();
+                } else {
+                    textArea1.setText("Order confirmed!" +
+                            "\n Your Food Will Be Ready Soon!");
+                    confirmButton = false;
+                    orderButton.setText("Place New Order");
+                }
 
-                timer.setInitialDelay(0);
-                timer.start();
                 // grab the text from the Celsius text field
                 //checkGuess();
             }
@@ -68,8 +76,6 @@ public class CelsiusGUI extends JFrame {
         CelsiusGUI game = new CelsiusGUI("Welcome to McDonald's");
         game.setVisible(true);
         game.newGame();
-
-
     }
 
     public void checkGuess() {
